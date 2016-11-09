@@ -11,6 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161109155433) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "shopify_account_url"
+    t.string   "shopify_api_key"
+    t.string   "shopify_password"
+    t.string   "shopify_shared_secret"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
 end

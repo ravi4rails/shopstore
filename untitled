@@ -1,0 +1,15 @@
+
+API key
+51dc8907c8dc62fc995376166aa75df8
+
+Password
+86d83099165013fc7d62d13ca232e73e
+
+Shared secret
+0af482e657cd8c4079eb65e8e535c1a6
+
+URL format
+https://apikey:password@hostname/admin/resource.json
+
+Example URL
+https://51dc8907c8dc62fc995376166aa75df8:86d83099165013fc7d62d13ca232e73e@test-shopstore.myshopify.com/admin/orders.json

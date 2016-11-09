@@ -1,0 +1,55 @@
+<%= form_for @account, :html => { :class => "form-horizontal account" } do |f| %>
+
+  <% if @account.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @account.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :shopify_account_url, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shopify_account_url, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shopify_account_url) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shopify_api_key, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shopify_api_key, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shopify_api_key) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shopify_password, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shopify_password, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shopify_password) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shopify_shared_secret, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shopify_shared_secret, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shopify_shared_secret) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                accounts_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
