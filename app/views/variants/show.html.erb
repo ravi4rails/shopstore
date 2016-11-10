@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @variant.product_id %>
+</p>
+
+<p>
+  <strong>Shopify variant:</strong>
+  <%= @variant.shopify_variant_id %>
+</p>
+
+<p>
+  <strong>Option1:</strong>
+  <%= @variant.option1 %>
+</p>
+
+<p>
+  <strong>Option2:</strong>
+  <%= @variant.option2 %>
+</p>
+
+<p>
+  <strong>Option3:</strong>
+  <%= @variant.option3 %>
+</p>
+
+<p>
+  <strong>Sku:</strong>
+  <%= @variant.sku %>
+</p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @variant.barcode %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @variant.price %>
+</p>
+
+<p>
+  <strong>Last shopify sync:</strong>
+  <%= @variant.last_shopify_sync %>
+</p>
+
+<%= link_to 'Edit', edit_variant_path(@variant) %> |
+<%= link_to 'Back', variants_path %>
