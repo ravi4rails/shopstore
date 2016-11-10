@@ -1,53 +1,90 @@
-<%= form_for(@variant) do |f| %>
-  <% if @variant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
+<%= form_for @variant, :html => { :class => "form-horizontal variant" } do |f| %>
 
-      <ul>
-      <% @variant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @variant.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @variant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.number_field :product_id %>
+  <div class="form-group">
+    <%= f.label :product_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :product_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:product_id) %>
   </div>
-  <div class="field">
-    <%= f.label :shopify_variant_id %><br>
-    <%= f.number_field :shopify_variant_id %>
+  <div class="form-group">
+    <%= f.label :shopify_variant_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shopify_variant_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shopify_variant_id) %>
   </div>
-  <div class="field">
-    <%= f.label :option1 %><br>
-    <%= f.text_field :option1 %>
+  <div class="form-group">
+    <%= f.label :option1, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :option1, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:option1) %>
   </div>
-  <div class="field">
-    <%= f.label :option2 %><br>
-    <%= f.text_field :option2 %>
+  <div class="form-group">
+    <%= f.label :option2, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :option2, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:option2) %>
   </div>
-  <div class="field">
-    <%= f.label :option3 %><br>
-    <%= f.text_field :option3 %>
+  <div class="form-group">
+    <%= f.label :option3, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :option3, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:option3) %>
   </div>
-  <div class="field">
-    <%= f.label :sku %><br>
-    <%= f.text_field :sku %>
+  <div class="form-group">
+    <%= f.label :sku, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sku, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sku) %>
   </div>
-  <div class="field">
-    <%= f.label :barcode %><br>
-    <%= f.text_field :barcode %>
+  <div class="form-group">
+    <%= f.label :barcode, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :barcode, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:barcode) %>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+  <div class="form-group">
+    <%= f.label :price, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :price, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:price) %>
   </div>
-  <div class="field">
-    <%= f.label :last_shopify_sync %><br>
-    <%= f.datetime_select :last_shopify_sync %>
+  <div class="form-group">
+    <%= f.label :last_shopify_sync, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :last_shopify_sync, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:last_shopify_sync) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                variants_path, :class => 'btn btn-default' %>
+    </div>
   </div>
+
 <% end %>
