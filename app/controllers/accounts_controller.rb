@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:show, :edit, :update, :destroy, :test_connection]
 
   # GET /accounts
   # GET /accounts.json
@@ -58,6 +58,34 @@ class AccountsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def test_connection
+    # Connect to Shopify using our class
+    ShopifyIntegration.new(api_key: @account.shopify_api_key,
+                           shared_secret: @account.shopify_shared_secret,
+                           url: @account.shopify_account_url,
+                           password: @account.shopify_password).connect()
+    begin
+      # The gem will throw an exception if unable to retrieve Shop information
+      shop = ShopifyAPI::Shop.current
+    rescue => ex
+      @message = ex.message
+    end
+
+    if shop.present?
+      respond_to do |format|
+        # Report the good news
+        format.html { redirect_to @account, notice: "Successfully Connected to #{shop.name}" }
+        format.json { render json: "Successfully Connected to #{shop.name}" }
+      end
+    else
+      respond_to do |format|
+        # Return the message from the exception
+        format.html { redirect_to @account, alert: "Unable to Connect: #{@message}" }
+        format.json { render json: "Unable to Connect: #{@message}", status: :unprocessable_entity }
+      end
     end
   end
 
