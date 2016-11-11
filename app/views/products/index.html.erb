@@ -1,6 +1,7 @@
 <%- model_class = Product -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <p><a href="<%= import_products_path %>">Import Products</a></p>
 </div>
 <table class="table table-striped">
   <thead>

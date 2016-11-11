@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :variants
-  resources :products
+
+  resources :products do
+    collection do
+      get :import
+    end
+    resources :variants
+  end
   resources :accounts do
     member do
       get 'test_connection'

@@ -1,38 +1,34 @@
-require "rails_helper"
+require "spec_helper"
 
-RSpec.describe VariantsController, type: :routing do
+describe VariantsController do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/variants").to route_to("variants#index")
+      get("/products/1/variants").should route_to("variants#index", :product_id => "1")
     end
 
     it "routes to #new" do
-      expect(:get => "/variants/new").to route_to("variants#new")
+      get("/products/1/variants/new").should route_to("variants#new", :product_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/variants/1").to route_to("variants#show", :id => "1")
+      get("/products/1/variants/2").should route_to("variants#show", :product_id => "1", :id => "2")
     end
 
     it "routes to #edit" do
-      expect(:get => "/variants/1/edit").to route_to("variants#edit", :id => "1")
+      get("/products/1/variants/2/edit").should route_to("variants#edit", :product_id => "1", :id => "2")
     end
 
     it "routes to #create" do
-      expect(:post => "/variants").to route_to("variants#create")
+      post("/products/1/variants").should route_to("variants#create", :product_id => "1")
     end
 
-    it "routes to #update via PUT" do
-      expect(:put => "/variants/1").to route_to("variants#update", :id => "1")
-    end
-
-    it "routes to #update via PATCH" do
-      expect(:patch => "/variants/1").to route_to("variants#update", :id => "1")
+    it "routes to #update" do
+      put("/products/1/variants/2").should route_to("variants#update", :product_id => "1", :id => "2")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/variants/1").to route_to("variants#destroy", :id => "1")
+      delete("/products/1/variants/2").should route_to("variants#destroy", :product_id => "1", :id => "2")
     end
 
   end
