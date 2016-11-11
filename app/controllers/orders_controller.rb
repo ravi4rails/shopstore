@@ -61,6 +61,27 @@ class OrdersController < ApplicationController
     end
   end
 
+  # GET /orders/import
+  # GET /orders/import.json
+  def import
+    # For now we'll use the last Account in the database
+    account = Account.last
+    # Instantiate the ShopifyIntegration class
+    shopify_integration = ShopifyIntegration.new(
+                        api_key: account.shopify_api_key,
+                        shared_secret: account.shopify_shared_secret,
+                        url: account.shopify_account_url,
+                        password: account.shopify_password)
+    respond_to do |format|
+      shopify_integration.connect
+      result = shopify_integration.import_orders
+      format.html { redirect_to ({action: :index}),
+      notice: "#{result[:created].to_i} created,
+      #{result[:updated]}
+      updated, #{result[:failed]} failed." }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

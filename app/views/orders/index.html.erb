@@ -1,6 +1,7 @@
 <%- model_class = Order -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <p><a href="<%= import_orders_path %>">Import Orders</a></p>
 </div>
 <table class="table table-striped">
   <thead>

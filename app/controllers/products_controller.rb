@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
   # GET /products/import
   # GET /products/import.json
   def import
-    # For now we'll use the first Account in the database
+    # For now we'll use the last Account in the database
     account = Account.last
     # Instantiate the ShopifyIntegration class
     shopify_integration = ShopifyIntegration.new(
