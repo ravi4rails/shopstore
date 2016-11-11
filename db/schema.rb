@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110183104) do
+ActiveRecord::Schema.define(version: 20161111172459) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "shopify_account_url"
@@ -24,15 +24,15 @@ ActiveRecord::Schema.define(version: 20161110183104) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.integer  "shopify_product_id"
+    t.integer  "shopify_product_id", limit: 8
     t.datetime "last_shopify_sync"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "variants", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "shopify_variant_id"
+    t.integer  "product_id",         limit: 8
+    t.integer  "shopify_variant_id", limit: 8
     t.string   "option1"
     t.string   "option2"
     t.string   "option3"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20161110183104) do
     t.string   "barcode"
     t.float    "price"
     t.datetime "last_shopify_sync"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "variants", ["product_id"], name: "index_variants_on_product_id"
