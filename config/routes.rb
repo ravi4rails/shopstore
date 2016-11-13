@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     end
   end
   get 'dashboard/index'
+  post "create_contest" => 'dashboard#create_contest'
   root to: "dashboard#index"
 end
